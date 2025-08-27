@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>East Point School — Logo</title>
+  <style>
+    /* ---- Reset / base ---- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: "Georgia", serif; }
+
+    /* ---- Theme ---- */
+    body {
+      /* golden → soft white */
+      background: linear-gradient(135deg, #fffaf0 0%, #f7efe1 40%, #d4af37 100%);
+      color: #333;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(92vw, 680px);
+      background: #ffffffcc;            /* translucent white */
+      backdrop-filter: blur(6px);
+      border: 1px solid #edd9a3;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+      padding: clamp(20px, 4vw, 36px);
+      text-align: center;
+    }
+
+    /* ---- Logo ---- */
+    .logo-wrap {
+      display: inline-grid;
+      place-items: center;
+      margin-bottom: 18px;
+    }
+
+    .logo {
+      width: clamp(120px, 40vw, 220px);
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #fff;                  /* crisp white ring behind PNG */
+      padding: clamp(8px, 2vw, 14px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.18), 0 0 0 6px #fff;
+      animation: glow 2.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 6px 18px rgba(0,0,0,.18), 0 0 0 6px #fff; }
+      to   { box-shadow: 0 10px 26px rgba(0,0,0,.22), 0 0 0 6px #fff, 0 0 24px 4px rgba(212,175,55,.35); }
+    }
+
+    /* ---- Text ---- */
+    h1 {
+      font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+      letter-spacing: .5px;
+      color: #a0761a; /* rich gold-brown */
+      margin-bottom: 6px;
+    }
+    p.sub {
+      font-size: clamp(.95rem, 2.2vw, 1.05rem);
+      color: #5a4a22;
+      opacity: .9;
+    }
+
+    /* ---- Optional button (to go to your main portal) ---- */
+    .cta {
+      margin-top: 18px;
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid #dabb63;
+      background: linear-gradient(180deg, #f9e8b6, #d7b54f);
+      color: #33270a;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .cta:active { transform: translateY(1px); }
+    .cta:hover  { filter: brightness(0.97); }
+  </style>
+</head>
+<body>
+
+  <main class="card" role="main" aria-label="East Point School Logo Card">
+    <div class="logo-wrap">
+      <!-- Keep the image file in the SAME folder as this HTML and name it exactly 'eps-logo.png' -->
+      <img src="eps-logo.png" alt="East Point School Ichhapur Logo" class="logo" />
+    </div>
+
+    <h1>East Point School, Ichhapur</h1>
+    <p class="sub">Learning with Excellence & Integrity</p>
+
+    <!-- If you want this to open your Teachers’ Day portal, change href to your page (e.g., index-portal.html) -->
+    <a class="cta" href="index.html">Enter Portal</a>
+  </main>
+
+</body>
+</html>
