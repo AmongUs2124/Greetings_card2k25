@@ -1,0 +1,37 @@
+/* Intro Section */
+#intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #fff8e7, #f7e0a3, #d4af37);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 3s ease forwards;
+  animation-delay: 3s; /* visible for 3s then fades */
+}
+
+/* Text Styling */
+#intro h1 {
+  font-size: 3em;
+  color: transparent;
+  background: linear-gradient(45deg, #ffd700, #fff4c2, #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: "Georgia", serif;
+  animation: fadeInText 2s ease forwards;
+}
+
+/* Fade in text */
+@keyframes fadeInText {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Fade out entire intro screen */
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
