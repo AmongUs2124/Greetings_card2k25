@@ -19,6 +19,33 @@
       padding: 24px;
     }
 
+    /* ---- Intro ---- */
+    #intro {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a, #000);
+      z-index: 9999;
+      animation: fadeOut 3s ease 2s forwards;
+    }
+    #intro h1 {
+      font-size: 3rem;
+      color: gold;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
     .card {
       width: min(92vw, 680px);
       background: #ffffffcc;            /* translucent white */
@@ -85,21 +112,21 @@
 </head>
 <body>
 
+  <!-- Animated Intro -->
+  <div id="intro">
+    <h1>Happy Teachers’ Day</h1>
+  </div>
+
   <main class="card" role="main" aria-label="East Point School Logo Card">
     <div class="logo-wrap">
-      <!-- Keep the image file in the SAME folder as this HTML and name it exactly 'eps-logo.png' -->
       <img src="eps-logo.png" alt="East Point School Ichhapur Logo" class="logo" />
     </div>
 
     <h1>East Point School, Ichhapur</h1>
     <p class="sub">Learning with Excellence & Integrity</p>
 
-    <!-- If you want this to open your Teachers’ Day portal, change href to your page (e.g., index-portal.html) -->
     <a class="cta" href="home.html">Enter Portal</a>
   </main>
 
 </body>
 </html>
-
-
-
