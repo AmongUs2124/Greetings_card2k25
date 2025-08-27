@@ -14,7 +14,6 @@
   animation-delay: 3s; /* visible for 3s then fades */
 }
 
-/* Text Styling */
 #intro h1 {
   font-size: 3em;
   color: transparent;
@@ -25,13 +24,88 @@
   animation: fadeInText 2s ease forwards;
 }
 
-/* Fade in text */
 @keyframes fadeInText {
   0% { opacity: 0; transform: scale(0.9); }
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Fade out entire intro screen */
 @keyframes fadeOut {
   to { opacity: 0; visibility: hidden; }
+}
+
+/* Envelope Section */
+.envelope {
+  position: relative;
+  width: 250px;
+  height: 150px;
+  background: #f7e0a3;
+  margin: 50px auto;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: #d4af37;
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 2;
+}
+
+.envelope.open .flap {
+  transform: rotateX(-180deg);
+}
+
+.envelope .message {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: white;
+  color: #333;
+  font-family: "Georgia", serif;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.envelope.open .message {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sticky Notes Wall */
+#sticky-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  margin: 40px;
+}
+
+.sticky-note {
+  background: #fffda0;
+  padding: 15px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #333;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  transform: rotate(-2deg);
+  transition: transform 0.2s;
+}
+
+.sticky-note:nth-child(even) {
+  background: #ffef9f;
+  transform: rotate(2deg);
+}
+
+.sticky-note:hover {
+  transform: scale(1.05) rotate(0);
 }
