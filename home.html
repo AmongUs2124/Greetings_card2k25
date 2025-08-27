@@ -159,7 +159,6 @@
 </head>
 <body>
 
-  <!-- Input Form -->
   <div class="form-container" id="formPage">
     <h1>Teachers' Day Portal</h1>
     <p>Enter your Name & Code:</p>
@@ -168,20 +167,20 @@
     <button onclick="showGreeting()">Enter</button>
   </div>
 
-  <!-- Greeting Page -->
   <div class="greeting" id="greetingPage">
     <h1 id="greetingText">Happy Teachers’ Day!</h1>
     <div class="note" id="noteText"></div>
     <button class="turn-btn" onclick="showInvitation()">📖 Turn Page</button>
   </div>
 
-  <!-- Invitation Page -->
   <div class="invitation" id="invitationPage">
     <h2>Teachers’ Day Celebration</h2>
-    <p><b>Date:</b> 5th September 2025</p>
-    <p><b>Time:</b> 10:00 AM onwards</p>
-    <p><b>Venue:</b> East Point School Auditorium</p>
-    <p>✨ Join us to honor and celebrate our beloved teachers ✨</p>
+    <p id="invitationHeading"></p>
+    <p id="invitationText"></p>
+    <p><b>Date:</b> <span id="invitationDate"></span></p>
+    <p><b>Time:</b> <span id="invitationTime"></span></p>
+    <p><b>Venue:</b> <span id="invitationVenue"></span></p>
+    <p id="invitationClosing"></p>
   </div>
 
   <script>
@@ -201,9 +200,11 @@
       let teacherFullName = teacherMap[code] || name || "Dear Teacher";
 
       document.getElementById("greetingText").innerText = "🎉 Happy Teachers’ Day 🎉";
-      document.getElementById("noteText").innerHTML = `Dear <b>${teacherFullName}</b>,<br>
-        You are the guiding light who inspires countless students.  
-        Today, we celebrate <span style="color:gold;">YOU</span> with gratitude and love.`;
+      document.getElementById("noteText").innerHTML = `
+        **Dear ${teacherFullName}**,
+        <br>
+        We want to express our deepest gratitude for all that you do. Thank you for your dedication, patience, and unwavering belief in your students. You are more than just a teacher; you are a mentor, a guide, and an inspiration. The lessons you've taught us extend far beyond the classroom, and we'll carry them with us always. Happy Teachers' Day!
+      `;
 
       document.getElementById("formPage").style.display = "none";
       document.getElementById("greetingPage").style.display = "block";
@@ -222,6 +223,13 @@
 
     // Show Invitation
     function showInvitation() {
+      document.getElementById("invitationHeading").innerHTML = "We're delighted to invite you to join us in celebrating Teachers' Day!";
+      document.getElementById("invitationText").innerHTML = "On this special occasion, we want to express our deepest gratitude for your unwavering dedication, guidance, and inspiration. Your commitment to shaping our future is truly appreciated. We look forward to honoring you at a special celebration.";
+      document.getElementById("invitationDate").innerText = "September 5, 2025";
+      document.getElementById("invitationTime").innerText = "11:30 a.m.";
+      document.getElementById("invitationVenue").innerText = "East Point School Seminar Hall";
+      document.getElementById("invitationClosing").innerText = "We hope to see you there!";
+
       document.getElementById("greetingPage").style.display = "none";
       document.getElementById("invitationPage").style.display = "block";
     }
