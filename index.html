@@ -93,6 +93,22 @@
       opacity: .9;
     }
 
+    /* ---- CTA Button ---- */
+    .cta {
+      margin-top: 18px;
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid #dabb63;
+      background: linear-gradient(180deg, #f9e8b6, #d7b54f);
+      color: #33270a;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .cta:active { transform: translateY(1px); }
+    .cta:hover { filter: brightness(0.97); }
+
     /* ---- Envelope & Sticky Notes ---- */
     .envelope-section {
         display: flex;
@@ -152,7 +168,7 @@
         font-family: 'Comic Sans MS', cursive;
         color: #333;
         font-size: 1rem;
-        transition: transform 0.8s ease;
+        transition: all 0.8s ease;
         opacity: 0;
         transform: translate(-50%, -50%) translateY(20px) scale(0.8);
     }
@@ -220,7 +236,7 @@
     <h1>East Point School, Ichhapur</h1>
     <p class="sub">Learning with Excellence & Integrity</p>
 
-    <a class="cta" href="#">Explore More</a>
+    <a class="cta" href="home.html">Enter Portal</a>
   </main>
   
   <div class="envelope-section">
@@ -250,6 +266,5 @@
       envelope.classList.add('open');
     }
   </script>
-
 </body>
 </html>
