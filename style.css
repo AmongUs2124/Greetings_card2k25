@@ -1,4 +1,18 @@
-/* Intro Section */
+/* ---- General & Layout ---- */
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: linear-gradient(135deg, #fffaf0 0%, #f7efe1 40%, #d4af37 100%);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* ---- Intro Section ---- */
 #intro {
   position: fixed;
   top: 0;
@@ -33,79 +47,177 @@
   to { opacity: 0; visibility: hidden; }
 }
 
-/* Envelope Section */
-.envelope {
-  position: relative;
-  width: 250px;
-  height: 150px;
-  background: #f7e0a3;
-  margin: 50px auto;
-  cursor: pointer;
-  perspective: 1000px;
+/* ---- Card Section ---- */
+.card {
+  width: min(92vw, 680px);
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  border: 1px solid #edd9a3;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  padding: clamp(20px, 4vw, 36px);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.envelope .flap {
+/* ---- Logo ---- */
+.logo-wrap {
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+
+.logo {
+  width: clamp(120px, 40vw, 220px);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  padding: clamp(8px, 2vw, 14px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18), 0 0 0 6px #fff;
+  animation: glow 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18), 0 0 0 6px #fff; }
+  to { box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22), 0 0 0 6px #fff, 0 0 24px 4px rgba(212, 175, 55, 0.35); }
+}
+
+/* ---- Text ---- */
+h1 {
+  font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+  letter-spacing: .5px;
+  color: #a0761a;
+  margin-bottom: 6px;
+}
+p.sub {
+  font-size: clamp(.95rem, 2.2vw, 1.05rem);
+  color: #5a4a22;
+  opacity: .9;
+}
+
+/* ---- CTA Button ---- */
+.cta {
+  margin-top: 18px;
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid #dabb63;
+  background: linear-gradient(180deg, #f9e8b6, #d7b54f);
+  color: #33270a;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s ease, filter .15s ease;
+}
+.cta:active { transform: translateY(1px); }
+.cta:hover { filter: brightness(0.97); }
+
+/* ---- Envelope & Sticky Notes ---- */
+.envelope-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.envelope-container {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.envelope {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #f7e1b9;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 1s ease-in-out;
+  transform-style: preserve-3d;
+  z-index: 10;
+}
+
+.flap {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 50%;
-  background: #d4af37;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 90px 140px 0 140px;
+  border-color: #f7e1b9 transparent transparent transparent;
   transform-origin: top;
-  transition: transform 1s ease;
-  z-index: 2;
+  transition: transform 0.5s ease-in-out;
 }
 
-.envelope.open .flap {
-  transform: rotateX(-180deg);
-}
-
-.envelope .message {
+.letter {
   position: absolute;
-  top: 20px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  background: white;
-  color: #333;
-  font-family: "Georgia", serif;
-  padding: 10px;
-  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+  background: #fff9c4;
   border-radius: 5px;
-  opacity: 0;
-  transform: translateY(20px);
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Comic Sans MS', cursive;
+  color: #333;
+  font-size: 1rem;
   transition: all 0.8s ease;
+  opacity: 0;
 }
 
-.envelope.open .message {
+.click-text {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #a0761a;
+}
+
+/* Open state for envelope */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* Sticky Notes Wall */
-#sticky-wall {
+.notes-wall {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 15px;
-  margin: 40px;
+  width: min(92vw, 680px);
+  margin-top: 30px;
+  z-index: 5;
 }
 
-.sticky-note {
-  background: #fffda0;
+.note {
+  background-color: #fce8a6;
   padding: 15px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  color: #333;
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-  transform: rotate(-2deg);
-  transition: transform 0.2s;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: rotate(calc(var(--i) * 2deg - 5deg));
+  transition: transform 0.3s ease;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #4a4a4a;
 }
 
-.sticky-note:nth-child(even) {
-  background: #ffef9f;
-  transform: rotate(2deg);
-}
-
-.sticky-note:hover {
-  transform: scale(1.05) rotate(0);
+.note:nth-child(2n) { background-color: #b7e4c7; }
+.note:nth-child(3n) { background-color: #c9e4ea; }
+.note:nth-child(4n) { background-color: #f2c7c7; }
+.note:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 20;
 }
